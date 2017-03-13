@@ -6,18 +6,65 @@ window.onload = function(){
   const ctx = canv.getContext('2d');
 
   const env = new Env(canv, ctx);
-  const bird = new Bird(150, 250, ctx)
+  const bird = new Bird(250, 250, ctx);
+  bird.velY = 0;
+  const pipes = [];
+  setInterval(function(){
+    let setPipe = genRndPipes(ctx, canv.width - 30, canv.height);
+    pipes.push(setPipe.top, setPipe.bottom)
+  }, 2500)
   gameLoop()
 
-  ctx.fillStyle = "#ffffff";
+
 
   /*======GAME LOOP======*/
   function gameLoop() {
     ctx.fillRect(0, 0, canv.width, canv.height)
     env.update();
     env.render();
+    pipes.forEach(function(pipe1){
+      pipe1.update();
+      pipe1.render();
+    })
     bird.update();
     bird.render();
+    if (colDetect(bird, pipes)){
+      alert("you lose");
+      location.reload();
+    }
     window.requestAnimationFrame(gameLoop)
   }
 };
+
+function genRndPipes(ctx, canvWidth, canvHeight){
+  let pTop = Math.round(Math.random() * 200 + 50);
+  let pBottom = canvHeight - 220 - pTop; //determines open space in middle of the pipes
+  let returnVal = {};
+  returnVal.top = new Pipe(canvWidth, -5, pTop, 4, ctx)
+  returnVal.bottom = new Pipe(canvWidth, canvHeight + 5 - pBottom, pBottom, 4, ctx)
+  return returnVal;
+}
+
+function colDetect(bird, pipes){
+  for(var i = 0; i <pipes.length; i++){
+    let e = pipes[i];
+    let highPipe = e.ypos <= 0;
+    let x0 = e.xpos, x1 = e.xpos + e.width;
+    if (highPipe) {
+      let y0 = e.ypos - 25 + e.height;
+      let aTop = bird.x;
+      let bTop = bird.y - bird.height/2;
+      if (aTop > (x0 - 20) && aTop < x1 && bTop < y0) {
+        return true;
+      }
+    } else {
+        let y2 = e.ypos + 12;
+        let a = bird.x;
+        let b = bird.y + bird.height/2;
+        if (a > (x0 - 25) && a < x1 && b > y2) {
+          return true;
+        }
+    }
+  };
+  return false;
+}

@@ -7,3 +7,7 @@ body {
 img {
   display: none;
 }
+
+#canvas {
+  width: 100vw;
+}

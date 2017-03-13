@@ -14,8 +14,8 @@ const Bird = function(x, y, ctx) {
   const self = this;
   window.addEventListener('keydown', function(e) {
     if (e.keyCode === 32) {
-      self.velY = -16;
-      console.log("jump");
+      self.velY = -14;
+      console.log("location y " + self.y);
     }
   });
 };
@@ -25,8 +25,17 @@ Bird.prototype.update = function() {
   if (this.ticks % 15 === 0) {
     this.spriteIndex = (this.spriteIndex + 1) % this.sprites.length; //determines when to change bird frame for animation
   }
+  if (this.y < -15) {
+    this.velY = 12;
+    console.log("too high")
+  }
+  if (this.y > 660) {
+    console.log("too low")
+    alert("you lose");
+    location.reload();
+  }
   this.y += this.velY;
-  //this.velY += 2;
+  this.velY += 1.25;
 };
 
 Bird.prototype.render = function() {
