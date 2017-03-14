@@ -3,6 +3,7 @@
     font-family: SugarPunch;
     src: url(Sugarpunch.otf);
 }
+
 /*====Body====*/
 body {
   position: relative;
@@ -10,6 +11,7 @@ body {
   background-repeat: repeat-x;;
   overflow: hidden;
 }
+
 /*====Header====*/
 .Snappy {
   font-family: SugarPunch;
@@ -27,6 +29,7 @@ body {
   margin-top: 4px;
   text-shadow: 2px 2px 3px #000000;
 }
+
 /*====Input and buttons====*/
 #forma {
   width: 1000px;
@@ -86,6 +89,7 @@ body {
   color: white;
   text-shadow: 2px 2px 3px #000000;
 }
+
 /*==== Footer ====*/
 #ins {
   font-family: SugarPunch;
