@@ -7,8 +7,11 @@ window.onload = function(){
 
   const env = new Env(canv, ctx);
   const bird = new Bird(250, 250, ctx);
-
+  bird.velY = 0;
   const pipes = [];
+  window.addEventListener('keydown', function(z){
+    if (z.keyCode === 13) {
+
   setInterval(function(){
     let setPipe = genRndPipes(ctx, canv.width, canv.height);
     pipes.push(setPipe.top, setPipe.bottom)
@@ -34,6 +37,8 @@ window.onload = function(){
     }
     window.requestAnimationFrame(gameLoop)
   }
+}
+}); //<-----event listener
 };
 
 function genRndPipes(ctx, canvWidth, canvHeight){

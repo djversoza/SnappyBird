@@ -22,34 +22,40 @@ $(document).ready(function() {
     var bttn = document.createElement('button');
     bttn.className = "play"
     $(bttn).text("PLAY")
+    var game = document.createElement("a")
+    console.log(game);
     if (weather === "snow") { //gets weather
       $("#status").html("")
       $("#go button").remove()
-      $("#status").append("its snowing")
+      $("#status").append("snow out there, stay warm!")
       $(bttn).appendTo("#go")
     } else if(weather === "clear"){
       $("#status").html("")
-      $("#go button").remove()
-      $("#status").append("its clear")
-      $(bttn).appendTo("#go")
+      $("#go button").remove();
+      $("#status").append("all clear, ready to fly!");
+      $(bttn).appendTo("#go");
+      $(game).attr("href", "../index.html")
     } else if(weather === "rain") {
       $("#status").html("")
       $("#go button").remove()
-      $("#status").append("its raining")
+      $("#status").append("its raining, fly at your own risk!")
       $(bttn).appendTo("#go")
     }else if(weather === "partlycloudy") {
       $("#status").html("")
       $("#go button").remove()
-      $("#status").append("its a little cloudy")
+      $("#status").append("its cloudy today!")
       $(bttn).appendTo("#go")
     } else {
       $("#status").html("")
       $("#go button").remove()
-      $("#status").append("its something")
+      $("#status").append("careful out there!")
       $(bttn).appendTo("#go")
     }
+    $(".play").click(function() {
+      window.location.href=game;
+    })
   })
-} //Gets weather
+ }  //Gets weather
 })
 
 });
