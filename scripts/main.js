@@ -7,13 +7,13 @@ window.onload = function(){
 
   const env = new Env(canv, ctx);
   const bird = new Bird(250, 250, ctx);
-  bird.velY = 0;
+
   const pipes = [];
   setInterval(function(){
-    let setPipe = genRndPipes(ctx, canv.width - 30, canv.height);
+    let setPipe = genRndPipes(ctx, canv.width, canv.height);
     pipes.push(setPipe.top, setPipe.bottom)
-  }, 2500)
-  gameLoop()
+  }, 2200);
+  gameLoop();
 
 
 
@@ -29,7 +29,7 @@ window.onload = function(){
     bird.update();
     bird.render();
     if (colDetect(bird, pipes)){
-      alert("you lose");
+      alert(bird.score + " you lose");
       location.reload();
     }
     window.requestAnimationFrame(gameLoop)
@@ -37,8 +37,8 @@ window.onload = function(){
 };
 
 function genRndPipes(ctx, canvWidth, canvHeight){
-  let pTop = Math.round(Math.random() * 200 + 50);
-  let pBottom = canvHeight - 220 - pTop; //determines open space in middle of the pipes
+  let pTop = Math.round(Math.random() * 250 + 20); //determines the max and min length of the pipes
+  let pBottom = canvHeight - 210 - pTop; //determines open space in middle of the pipes
   let returnVal = {};
   returnVal.top = new Pipe(canvWidth, -5, pTop, 4, ctx)
   returnVal.bottom = new Pipe(canvWidth, canvHeight + 5 - pBottom, pBottom, 4, ctx)

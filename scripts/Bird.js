@@ -1,12 +1,13 @@
 const Bird = function(x, y, ctx) {
   this.x = x;
   this.y = y;
+  this.score = 0;
   this.ctx = ctx;
   this.velY = 0;
   this.width = 90;
   this.height = 64;
-  this.ticks = 0; //determines animation
-  this.spriteIndex = 0; //determines animation
+  this.ticks = 0; //determines when to animate
+  this.spriteIndex = 0; //determines which picture to use
   this.sprites = [document.getElementById("bird1"),
                   document.getElementById("bird2"),
                   document.getElementById("bird1"),
@@ -15,19 +16,23 @@ const Bird = function(x, y, ctx) {
   window.addEventListener('keydown', function(e) {
     if (e.keyCode === 32) {
       self.velY = -14;
-      console.log("location y " + self.y);
+  //    console.log("location y " + self.y);
     }
   });
 };
 
 Bird.prototype.update = function() {
   this.ticks++;
-  if (this.ticks % 15 === 0) {
+  if (this.ticks > 340 && this.ticks % 130 === 0) {
+    this.score++
+    console.log("score is " + this.score);
+  }
+  if (this.ticks % 10 === 0) {
     this.spriteIndex = (this.spriteIndex + 1) % this.sprites.length; //determines when to change bird frame for animation
   }
   if (this.y < -15) {
     this.velY = 12;
-    console.log("too high")
+    console.log("too high") // sets upper boundary
   }
   if (this.y > 660) {
     console.log("too low")

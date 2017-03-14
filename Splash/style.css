@@ -1,0 +1,69 @@
+/*====Fonts====*/
+@font-face {
+    font-family: SugarPunch;
+    src: url(Sugarpunch.otf);
+}
+/*====Body====*/
+body {
+  position: relative;
+  background-image: url("cloudy.png");
+  background-repeat: repeat-x;;
+  overflow: hidden;
+}
+/*====Header====*/
+.Snappy {
+  font-family: SugarPunch;
+  color: aqua;
+  text-align: center;
+  margin-top: 150px;
+  font-size: 80px;
+  text-shadow: 2px 2px 8px #000000;
+}
+.play {
+  background-color: red;
+  padding-top: 10px;
+  padding-left: 13px;
+  padding-right: 13px;
+  font-family: SugarPunch;
+  font-size: 22px;
+}
+
+#forma {
+  width: 1000px;
+  margin: 0px auto;
+}
+
+.inBox {
+  width: 100%;
+  margin: 0px auto;
+  margin-left: 40px;
+  margin-top: 8%;
+}
+
+h3 {
+  text-align: center;
+  font-family: SugarPunch;
+  color: white;
+  text-shadow: 2px 2px 3px #000000;
+}
+
+#st, #cty {
+  width: 20%;
+  padding: 10px;
+  font-size: 25px;
+}
+
+#btn {
+  padding-top: 15px;
+  padding-bottom: 5px;
+  width: 10%;
+  font-family: SugarPunch;
+  font-size: 20px;
+}
+
+.txtBox {
+  width: 30%;
+  margin: 0px auto;
+  text-align: center;
+  font-family: SugarPunch;
+}
