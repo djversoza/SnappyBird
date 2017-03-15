@@ -16,4 +16,5 @@ Pipe.prototype.render = function(){
   this.ctx.fillRect(this.xpos, this.ypos, this.width, this.height)
   this.ctx.fillStyle = "#74BF2E";
   this.ctx.fillRect(this.xpos + 5, this.ypos+5, this.width - 10, this.height-10)
+
 };

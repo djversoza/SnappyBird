@@ -6,12 +6,15 @@ window.onload = function(){
   const ctx = canv.getContext('2d');
 
   const env = new Env(canv, ctx);
-  const bird = new Bird(250, 250, ctx);
-  bird.velY = 0;
+  const bird = new Bird(250, 250, ctx, canv);
+  var highScore = 0;
+  $(".reset").append("<h1>" + highScore + "</h1>")
   const pipes = [];
   window.addEventListener('keydown', function(z){
     if (z.keyCode === 13) {
 
+  let setPipe = genRndPipes(ctx, canv.width, canv.height);
+  pipes.push(setPipe.top, setPipe.bottom)
   setInterval(function(){
     let setPipe = genRndPipes(ctx, canv.width, canv.height);
     pipes.push(setPipe.top, setPipe.bottom)
@@ -22,22 +25,33 @@ window.onload = function(){
 
   /*======GAME LOOP======*/
   function gameLoop() {
-    ctx.fillRect(0, 0, canv.width, canv.height)
-    env.update();
+    //ctx.fillRect(0, 0, canv.width, canv.height)
+
+
+    bird.update(pipes);
+
+    if(!bird.hit){
+
+        env.update();
+
+        pipes.forEach(function(pipe1){
+          pipe1.update();
+        })
+    }
+
     env.render();
     pipes.forEach(function(pipe1){
-      pipe1.update();
       pipe1.render();
     })
-    bird.update();
+    env.scoreCtr();
+
     bird.render();
-    if (colDetect(bird, pipes)){
-      alert(bird.score + " you lose");
-      location.reload();
+    if (bird.hit) {
+      gameOver(ctx, canv, env.score, bird.y, highScore);
     }
     window.requestAnimationFrame(gameLoop)
   }
-}
+ }
 }); //<-----event listener
 };
 
@@ -50,26 +64,18 @@ function genRndPipes(ctx, canvWidth, canvHeight){
   return returnVal;
 }
 
-function colDetect(bird, pipes){
-  for(var i = 0; i <pipes.length; i++){
-    let e = pipes[i];
-    let highPipe = e.ypos <= 0;
-    let x0 = e.xpos, x1 = e.xpos + e.width;
-    if (highPipe) {
-      let y0 = e.ypos - 25 + e.height;
-      let aTop = bird.x;
-      let bTop = bird.y - bird.height/2;
-      if (aTop > (x0 - 20) && aTop < x1 && bTop < y0) {
-        return true;
-      }
-    } else {
-        let y2 = e.ypos + 12;
-        let a = bird.x;
-        let b = bird.y + bird.height/2;
-        if (a > (x0 - 25) && a < x1 && b > y2) {
-          return true;
-        }
-    }
-  };
-  return false;
+
+
+function gameOver(ctx, canv, score, bird, hs) {
+  if (score > hs) {
+    console.log("winner")
+  }
+  ctx.fillStyle = "DarkRed"
+  ctx.font = "40px Sugar";
+  ctx.textAlign = "center";
+  ctx.fillText("Game Over!", canv.width/2, canv.height/2)
+  ctx.fillText("Score: " + score, canv.width/2, canv.height/2 + 50)
+  if(bird > 600 && bird < 670){
+    $(".reset").append("<h1>yo</h1>")
+  }
 }
