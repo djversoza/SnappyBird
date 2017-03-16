@@ -67,7 +67,7 @@ window.onload = function(){
 
 function genRndPipes(ctx, canvWidth, canvHeight){
   let pTop = Math.round(Math.random() * 250 + 20); //determines the max and min length of the pipes
-  let pBottom = canvHeight - 210 - pTop; //determines open space in middle of the pipes
+  let pBottom = canvHeight - 180 - pTop; //determines open space in middle of the pipes
   let returnVal = {};
   returnVal.top = new Pipe(canvWidth, -5, pTop, 4, ctx)
   returnVal.bottom = new Pipe(canvWidth, canvHeight + 5 - pBottom, pBottom, 4, ctx)

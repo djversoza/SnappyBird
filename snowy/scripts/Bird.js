@@ -18,7 +18,7 @@ const Bird = function(x, y, ctx, canv) {
   const self = this;
   window.addEventListener('keydown', function(e) {
     if (e.keyCode === 32 && !self.hit) {
-      self.velY = -14;
+      self.velY = -8;
   //    console.log("location y " + self.y);
     }
   });

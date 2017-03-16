@@ -1,5 +1,5 @@
 window.onload = function(){
-  const canv = document.getElementById("canvas");
+  const canv = document.getElementById("canvas")
   canv.width = window.innerWidth;
   canv.height = 600;
 
@@ -8,6 +8,7 @@ window.onload = function(){
 
   const env = new Env(canv, ctx);
   const bird = new Bird(250, 250, ctx, canv);
+
   var highScore = localStorage.getItem("hScore");
     console.log(highScore)
     $(".reset").append("<h1>" + "HighScore: " + highScore + "</h1>")
@@ -28,7 +29,7 @@ window.onload = function(){
   setInterval(function(){
     let setPipe = genRndPipes(ctx, canv.width, canv.height);
     pipes.push(setPipe.top, setPipe.bottom)
-  }, 2200);
+  }, 1900);
   gameLoop();
 
 
@@ -69,8 +70,8 @@ function genRndPipes(ctx, canvWidth, canvHeight){
   let pTop = Math.round(Math.random() * 250 + 20); //determines the max and min length of the pipes
   let pBottom = canvHeight - 210 - pTop; //determines open space in middle of the pipes
   let returnVal = {};
-  returnVal.top = new Pipe(canvWidth, -5, pTop, 4, ctx)
-  returnVal.bottom = new Pipe(canvWidth, canvHeight + 5 - pBottom, pBottom, 4, ctx)
+  returnVal.top = new Pipe(canvWidth, -5, pTop, 6, ctx)
+  returnVal.bottom = new Pipe(canvWidth, canvHeight + 5 - pBottom, pBottom, 6, ctx)
   return returnVal;
 }
 

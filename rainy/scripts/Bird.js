@@ -64,8 +64,8 @@ Bird.prototype.colDetect = function(pipes){
     let highPipe = e.ypos <= 0;
     let x0 = e.xpos, x1 = e.xpos + e.width;
 
-    if (this.x > x0 + 10 && this.x < x0 + 15) {
-      this.score+= .5
+    if (this.x > x0 + 8 && this.x < x0 + 18) {
+      this.score+= .25
       console.log(this.score)
     }
 

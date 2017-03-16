@@ -12,10 +12,7 @@ const Env = function(canv, ctx){
 
 Env.prototype.update = function(){
   this.ticks++;
-//  if (this.ticks > 260 && this.ticks % 138 === 0) {
-  //  this.score++
 
-//  }
 
   this.bgPos -= this.bgSpeed;
   if (this.bgPos < -this.bgWidth) {

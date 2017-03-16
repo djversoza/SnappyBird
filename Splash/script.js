@@ -29,6 +29,7 @@ $(document).ready(function() {
       $("body").css("background-image", "")
       $("body").css("background-image", "url(tree.jpg)")
       $(bttn).appendTo("#go")
+      $(game).attr("href", "../snowy/index.html")
     } else if(weather === "clear"){
       $("#status").html("")
       $("#go button").remove();
@@ -44,6 +45,7 @@ $(document).ready(function() {
       $("body").css("background-image", "")
       $("body").css("background-image", "url(rain.jpg)")
       $(bttn).appendTo("#go")
+      $(game).attr("href", "../rainy/index.html")
     }else if(weather === "partlycloudy") {
       $("#status").html("")
       $("#go button").remove()
@@ -51,6 +53,7 @@ $(document).ready(function() {
       $("body").css("background-image", "")
       $("body").css("background-image", "url(cloudy.png)")
       $(bttn).appendTo("#go")
+      $(game).attr("href", "../cloudy/index.html")
     } else {
       $("#status").html("")
       $("#go button").remove()
