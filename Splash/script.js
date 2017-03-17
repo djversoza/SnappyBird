@@ -28,7 +28,7 @@ $(document).ready(function() {
                        clear: ["../sunny/index.html", "url(blue.jpg)", "all clear, ready to fly!"],
                        rain: ["../rainy/index.html", "url(rain.jpg)", "rain! fly at your own risk!"],
                        cloudy: ["../cloudy/index.html", "url(cloudy.png)", "its cloudy today!"],
-                       default: [ "../sunny/index.html", "url(cloudy.png)", weather]};
+                       default: [ "../sunny/index.html", "url(cloudy.png)", "careful, its " + weather]};
 
 
 
