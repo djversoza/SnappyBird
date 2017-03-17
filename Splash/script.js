@@ -22,47 +22,38 @@ $(document).ready(function() {
     $(bttn).text("PLAY")
     var game = document.createElement("a")
     console.log(game);
-    if (weather === "snow") { //gets weather
+
+    // reduce lines 28 to 68 ( 40 lines of code to no more than 10 lines of code )
+    var gameOptions = {snow: ["../snowy/index.html", "url(tree.jpg)", "snow out there, stay warm!"],
+                       clear: ["../sunny/index.html", "url(blue.jpg)", "all clear, ready to fly!"],
+                       rain: ["../rainy/index.html", "url(rain.jpg)", "rain! fly at your own risk!"],
+                       cloudy: ["../cloudy/index.html", "url(cloudy.png)", "its cloudy today!"],
+                       default: [ "../sunny/index.html", "url(cloudy.png)", weather]};
+
+
+
+    if (gameOptions[weather]) {
+          getter(gameOptions[weather][2], gameOptions[weather][1], gameOptions[weather][0] )
+        } else {
+          getter(gameOptions["default"][2], gameOptions["default"][1], gameOptions["default"][0])
+
+        }
+
+
+
+
+
+    function getter(msg, bg, file) {
       $("#status").html("")
       $("#go button").remove()
-      $("#status").append("snow out there, stay warm!")
+      $("#status").append(msg)
       $("body").css("background-image", "")
-      $("body").css("background-image", "url(tree.jpg)")
+      $("body").css("background-image", bg)
       $(bttn).appendTo("#go")
-      $(game).attr("href", "../snowy/index.html")
-    } else if(weather === "clear"){
-      $("#status").html("")
-      $("#go button").remove();
-      $("#status").append("all clear, ready to fly!");
-      $("body").css("background-image", "")
-      $("body").css("background-image", "url(blue.jpg)")
-      $(bttn).appendTo("#go");
-      $(game).attr("href", "../sunny/index.html")
-    } else if(weather === "rain") {
-      $("#status").html("")
-      $("#go button").remove()
-      $("#status").append("its raining, fly at your own risk!")
-      $("body").css("background-image", "")
-      $("body").css("background-image", "url(rain.jpg)")
-      $(bttn).appendTo("#go")
-      $(game).attr("href", "../rainy/index.html")
-    }else if(weather === "partlycloudy") {
-      $("#status").html("")
-      $("#go button").remove()
-      $("#status").append("its cloudy today!");
-      $("body").css("background-image", "")
-      $("body").css("background-image", "url(cloudy.png)")
-      $(bttn).appendTo("#go")
-      $(game).attr("href", "../cloudy/index.html")
-    } else {
-      $("#status").html("")
-      $("#go button").remove()
-      $("#status").append("careful out there!")
-      $("body").css("background-image", "")
-      $("body").css("background-image", "url(cloudy.png)")
-      $(bttn).appendTo("#go")
-      $(game).attr("href", "../sunny/index.html")
+      $(game).attr("href", file)
     }
+
+
     $(".play").click(function() {
       window.location.href=game;
     })
