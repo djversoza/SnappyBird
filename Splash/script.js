@@ -23,12 +23,12 @@ $(document).ready(function() {
     var game = document.createElement("a")
     console.log(game);
 
-    // reduce lines 28 to 68 ( 40 lines of code to no more than 10 lines of code )
+
     var gameOptions = {snow: ["../snowy/index.html", "url(tree.jpg)", "snow out there, stay warm!"],
                        clear: ["../sunny/index.html", "url(blue.jpg)", "all clear, ready to fly!"],
                        rain: ["../rainy/index.html", "url(rain.jpg)", "rain! fly at your own risk!"],
                        cloudy: ["../cloudy/index.html", "url(cloudy.png)", "its cloudy today!"],
-                       default: [ "../sunny/index.html", "url(cloudy.png)", "careful, its " + weather]};
+                       default: [ "../cloudy/index.html", "url(cloudy.png)", "careful, its " + weather]};
 
 
 
@@ -37,7 +37,6 @@ $(document).ready(function() {
         } else {
           getter(gameOptions["default"][2], gameOptions["default"][1], gameOptions["default"][0])
         }
-
 
 
     function getter(msg, bg, file) {
