@@ -7,6 +7,7 @@ window.onload = function(){
 
 
   const env = new Env(canv, ctx);
+  const effect = new Effect(canv, ctx);
   const bird = new Bird(250, 250, ctx, canv);
 
   var highScore = localStorage.getItem("hScore");
@@ -36,7 +37,6 @@ window.onload = function(){
 
   /*======GAME LOOP======*/
   function gameLoop() {
-    //ctx.fillRect(0, 0, canv.width, canv.height)
 
 
     bird.update(pipes);
@@ -48,6 +48,7 @@ window.onload = function(){
         pipes.forEach(function(pipe1){
           pipe1.update();
         })
+        effect.update();
     }
 
     env.render();
@@ -57,6 +58,7 @@ window.onload = function(){
     bird.scoreCtr();
 
     bird.render();
+    effect.render();
     if (bird.hit) {
       gameOver(ctx, canv, bird.score, highScore);
     }

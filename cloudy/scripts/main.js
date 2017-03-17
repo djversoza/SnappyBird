@@ -20,7 +20,7 @@ window.onload = function(){
   $(".cen").append(btn)
   const pipes = [];
 
-  window.addEventListener('keydown', function(z){
+  window.addEventListener('keydown', function(z){ //starts game
     if (z.keyCode === 13) {
 
   let setPipe = genRndPipes(ctx, canv.width, canv.height);
@@ -47,6 +47,7 @@ window.onload = function(){
         pipes.forEach(function(pipe1){
           pipe1.update();
         })
+
     }
 
     env.render();
@@ -56,6 +57,7 @@ window.onload = function(){
     bird.scoreCtr();
 
     bird.render();
+
     if (bird.hit) {
       gameOver(ctx, canv, bird.score, highScore);
     }
