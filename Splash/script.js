@@ -36,10 +36,7 @@ $(document).ready(function() {
           getter(gameOptions[weather][2], gameOptions[weather][1], gameOptions[weather][0] )
         } else {
           getter(gameOptions["default"][2], gameOptions["default"][1], gameOptions["default"][0])
-
         }
-
-
 
 
 
