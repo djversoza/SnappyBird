@@ -1,1 +1,1 @@
-"WORK IN PROGRESS"
+"Snappy Bird game"
